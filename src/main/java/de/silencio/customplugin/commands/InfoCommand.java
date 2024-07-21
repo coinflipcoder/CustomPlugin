@@ -6,7 +6,6 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 public final class InfoCommand implements SimpleCommand {
@@ -109,6 +108,7 @@ public final class InfoCommand implements SimpleCommand {
                                     " <bold><blue>»</blue></bold> <gray> Increased the amount of bark crafted.\n" +
                                     " <bold><blue>»</blue></bold> <gray> Increased the amount of stairs crafted.\n" +
                                     " <bold><blue>»</blue></bold> <gray> Increased the amount of bricks crafted.\n" +
+                                    " <bold><blue>»</blue></bold> <gray> Increased the amount of carpets crafted.\n" +
                                     " <bold><blue>»</blue></bold> <gray> Brick slabs and stairs can be crafted back into blocks.\n" +
                                     " <bold><blue>»</blue></bold> <gray> Dispensers can be crafted with a dropper inside the bow recipe.\n" +
                                     " <bold><blue>»</blue></bold> <gray> Coal can be crafted into black dye.\n" +

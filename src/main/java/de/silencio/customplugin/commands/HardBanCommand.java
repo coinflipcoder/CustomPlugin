@@ -16,7 +16,7 @@ public class HardBanCommand implements SimpleCommand {
 
     @Override
     public void execute(final Invocation invocation) {
-        if (invocation.source().hasPermission("custom.hardban")) {
+        if (invocation.source().hasPermission("custom.hardban") || invocation.source().hasPermission("custom.*")) {
             if (invocation.arguments().length == 1) {
                 Player target;
                 for (Player p : server.getAllPlayers()) {
@@ -36,7 +36,7 @@ public class HardBanCommand implements SimpleCommand {
     public CompletableFuture<List<String>> suggestAsync(final Invocation invocation) {
         List<String> returnList = new ArrayList<>();
 
-        if (invocation.source().hasPermission("custom.hardban")) {
+        if (invocation.source().hasPermission("custom.hardban") || invocation.source().hasPermission("custom.*")) {
             for (Player p : server.getAllPlayers()) {
                 returnList.add(p.getUsername());
             }

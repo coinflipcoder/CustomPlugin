@@ -55,7 +55,7 @@ public class NickCommand implements SimpleCommand {
             luckPermsAPI.getUserManager().saveUser(user);
 
         } else if (invocation.arguments().length == 2) {
-            if (!invocation.source().hasPermission("custom.nickother")) {
+            if (!invocation.source().hasPermission("custom.nickother") || invocation.source().hasPermission("custom.*")) {
                 invocation.source().sendMessage(invalidPermission);
                 return;
             }
@@ -74,7 +74,7 @@ public class NickCommand implements SimpleCommand {
     @Override
     public CompletableFuture<List<String>> suggestAsync(final Invocation invocation) {
         List<String> returnList = new ArrayList<>(List.of("<Nickname>"));
-        if (invocation.source().hasPermission("custom.nickother")) {
+        if (invocation.source().hasPermission("custom.nickother") || invocation.source().hasPermission("custom.*")) {
             for (Player p : server.getAllPlayers()) {
                 returnList.add(p.getUsername());
             }

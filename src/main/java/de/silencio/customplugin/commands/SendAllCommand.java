@@ -16,7 +16,7 @@ public class SendAllCommand implements SimpleCommand {
 
     @Override
     public void execute(final Invocation invocation) {
-        if (invocation.source().hasPermission("custom.sendall")) {
+        if (invocation.source().hasPermission("custom.sendall") || invocation.source().hasPermission("custom.*")) {
             if (invocation.arguments().length == 1) {
                 for (Player p : server.getAllPlayers()) {
                     p.createConnectionRequest(server.getServer(invocation.arguments()[0]).get()).connect();
@@ -29,7 +29,7 @@ public class SendAllCommand implements SimpleCommand {
     public CompletableFuture<List<String>> suggestAsync(final Invocation invocation) {
         List<String> returnList = new ArrayList<>();
 
-        if (invocation.source().hasPermission("custom.sendall")) {
+        if (invocation.source().hasPermission("custom.sendall") || invocation.source().hasPermission("custom.*")) {
             for (RegisteredServer p : server.getAllServers()) {
                 returnList.add(p.getServerInfo().getName());
             }

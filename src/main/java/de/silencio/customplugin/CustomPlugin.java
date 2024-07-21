@@ -55,13 +55,20 @@ public class CustomPlugin {
                 .aliases("hub")
                 .plugin(this)
                 .build();
-        CommandMeta sendCommandMeta = commandManager.metaBuilder("send")
+        CommandMeta sendCommandMeta = commandManager.metaBuilder("sendplayer")
                 .plugin(this)
                 .build();
-        CommandMeta sendAllCommandMeta = commandManager.metaBuilder("sendall")
+        CommandMeta sendAllCommandMeta = commandManager.metaBuilder("sendeveryone")
                 .plugin(this)
                 .build();
         CommandMeta hardBanCommand = commandManager.metaBuilder("hardban")
+                .plugin(this)
+                .build();
+        CommandMeta sayCommand = commandManager.metaBuilder("sayall")
+                .plugin(this)
+                .build();
+        CommandMeta helpCommand = commandManager.metaBuilder("help")
+                .aliases("customhelp")
                 .plugin(this)
                 .build();
 
@@ -76,6 +83,8 @@ public class CustomPlugin {
         commandManager.register(sendCommandMeta, new SendCommand(server));
         commandManager.register(sendAllCommandMeta, new SendAllCommand(server));
         commandManager.register(hardBanCommand, new HardBanCommand(server));
+        commandManager.register(sayCommand, new SayCommand(server));
+        commandManager.register(helpCommand, new HelpCommand(server, this));
 
         logger.info("Custom Plugin started up.");
     }
