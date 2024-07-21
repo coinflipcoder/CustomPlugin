@@ -1,5 +1,6 @@
 package de.silencio.customplugin;
 
+import com.github.retrooper.packetevents.PacketEvents;
 import com.google.inject.Inject;
 import com.velocitypowered.api.command.CommandManager;
 import com.velocitypowered.api.command.CommandMeta;
@@ -11,6 +12,7 @@ import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.proxy.ProxyServer;
 import de.silencio.customplugin.commands.*;
 import de.silencio.customplugin.events.PlayerJoinEvent;
+import de.silencio.customplugin.events.SafeServerPacket;
 import org.slf4j.Logger;
 
 @Plugin(
@@ -21,7 +23,8 @@ import org.slf4j.Logger;
         url = "devlencio.net",
         authors = {"Silencio"},
         dependencies = {
-                @Dependency(id = "luckperms")
+                @Dependency(id = "luckperms"),
+                @Dependency(id = "packetevents")
         }
 )
 public class CustomPlugin {
@@ -33,6 +36,7 @@ public class CustomPlugin {
     public CustomPlugin(ProxyServer server, Logger logger) {
         this.server = server;
         this.logger = logger;
+
     }
 
     @Subscribe
@@ -85,6 +89,8 @@ public class CustomPlugin {
         commandManager.register(hardBanCommand, new HardBanCommand(server));
         commandManager.register(sayCommand, new SayCommand(server));
         commandManager.register(helpCommand, new HelpCommand(server, this));
+
+        PacketEvents.getAPI().getEventManager().registerListener(new SafeServerPacket());
 
         logger.info("Custom Plugin started up.");
     }
