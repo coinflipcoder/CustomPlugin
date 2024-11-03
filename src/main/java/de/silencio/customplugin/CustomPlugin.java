@@ -65,13 +65,16 @@ public class CustomPlugin {
         CommandMeta sendAllCommandMeta = commandManager.metaBuilder("sendeveryone")
                 .plugin(this)
                 .build();
-        CommandMeta hardBanCommand = commandManager.metaBuilder("hardban")
+        CommandMeta networkBanCommandMeta = commandManager.metaBuilder("networkban")
                 .plugin(this)
                 .build();
-        CommandMeta sayCommand = commandManager.metaBuilder("sayall")
+        CommandMeta networkUnbanCommandMeta = commandManager.metaBuilder("networkunban")
                 .plugin(this)
                 .build();
-        CommandMeta helpCommand = commandManager.metaBuilder("help")
+        CommandMeta sayCommandMeta = commandManager.metaBuilder("sayall")
+                .plugin(this)
+                .build();
+        CommandMeta helpCommandMeta = commandManager.metaBuilder("help")
                 .aliases("customhelp")
                 .plugin(this)
                 .build();
@@ -86,9 +89,10 @@ public class CustomPlugin {
         commandManager.register(lobbyCommandMeta, new LobbyCommand(server));
         commandManager.register(sendCommandMeta, new SendCommand(server));
         commandManager.register(sendAllCommandMeta, new SendAllCommand(server));
-        commandManager.register(hardBanCommand, new HardBanCommand(server));
-        commandManager.register(sayCommand, new SayCommand(server));
-        commandManager.register(helpCommand, new HelpCommand(server, this));
+        commandManager.register(networkBanCommandMeta, new NetworkBanCommand(server));
+        commandManager.register(networkUnbanCommandMeta, new NetworkUnbanCommand(server));
+        commandManager.register(sayCommandMeta, new SayCommand(server));
+        commandManager.register(helpCommandMeta, new HelpCommand(server, this));
 
         PacketEvents.getAPI().getEventManager().registerListener(new SafeServerPacket());
 
