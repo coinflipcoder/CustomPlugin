@@ -52,6 +52,9 @@ public class CustomPlugin {
         CommandMeta infoCommandMeta = commandManager.metaBuilder("info")
                 .plugin(this)
                 .build();
+        CommandMeta mapCommandMeta = commandManager.metaBuilder("map")
+                .plugin(this)
+                .build();
         CommandMeta afkCommandMeta = commandManager.metaBuilder("afk")
                 .plugin(this)
                 .build();
@@ -84,6 +87,7 @@ public class CustomPlugin {
 
         // Commands
         commandManager.register(nickCommandMeta, new NickCommand(server));
+        commandManager.register(mapCommandMeta, new MapCommand());
         commandManager.register(infoCommandMeta, new InfoCommand());
         commandManager.register(afkCommandMeta, new AfkCommand(server));
         commandManager.register(lobbyCommandMeta, new LobbyCommand(server));
