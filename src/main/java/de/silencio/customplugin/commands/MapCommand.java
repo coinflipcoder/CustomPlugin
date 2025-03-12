@@ -9,7 +9,7 @@ public final class MapCommand implements SimpleCommand {
 
     @Override
     public void execute(final Invocation invocation) {
-        Component mapMessage = mm.deserialize("<aqua>The map can be viewed at <gold>https://map.devlencio.net</gold><aqua>.");
+        Component mapMessage = mm.deserialize("<aqua>The map can be viewed <gold><u><click:open_url:'https://map.devlencio.net'>here</click></u></gold><aqua>.");
         invocation.source().sendMessage(mapMessage);
     }
 }

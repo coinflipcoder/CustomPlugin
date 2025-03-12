@@ -39,8 +39,8 @@ public final class InfoCommand implements SimpleCommand {
                     Component disclaimer = mm.deserialize("<gray>This server is using Fabric to run a multitude of server side mods. No mods are needed for you to play.");
                     Component sections = mm.deserialize("<aqua>Use these commands to view individual sections:");
                     Component commands = mm.deserialize(" <gray>/info</gray> <gold>commands:</gold> <gray>-> Information commands.");
-                    Component changes = mm.deserialize("  <gray>/info</gray> <gold>changes:</gold> <gray>-> Information about small changes and QOL tweaks. All of these are from VanillaTweaks if you want to know more.");
-                    Component crafting = mm.deserialize(" <gray>/info</gray> <gold>crafting:</gold> <gray>-> Information about new and altered crafting recipes. All of these are from VanillaTweaks if you want to know more.");
+                    Component changes = mm.deserialize("  <gray>/info</gray> <gold>changes:</gold> <gray>-> Information about small changes and QOL tweaks.");
+                    Component crafting = mm.deserialize(" <gray>/info</gray> <gold>crafting:</gold> <gray>-> Information about new and altered crafting recipes.");
 
                     invocation.source().sendMessage(emptyLine);
                     invocation.source().sendMessage(header);
