@@ -9,10 +9,11 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public final class InfoCommand implements SimpleCommand {
-    static MiniMessage mm = MiniMessage.miniMessage();
-    static Component emptyLine = Component.text("");
-    static Component invalidUsage = mm.deserialize("<red>Invalid command usage.");
-    static Component invalidServer = mm.deserialize("<red>No info for this server.");
+    private static final MiniMessage mm = MiniMessage.miniMessage();
+
+    final static Component emptyLine = Component.text("");
+    final static Component invalidUsage = mm.deserialize("<red>Invalid command usage.");
+    final static Component invalidServer = mm.deserialize("<red>No info for this server.");
 
     @Override
     public void execute(final Invocation invocation) {

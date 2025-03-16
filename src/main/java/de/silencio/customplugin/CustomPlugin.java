@@ -28,7 +28,6 @@ import org.slf4j.Logger;
         }
 )
 public class CustomPlugin {
-
     private final Logger logger;
     private final ProxyServer server;
 
@@ -36,7 +35,6 @@ public class CustomPlugin {
     public CustomPlugin(ProxyServer server, Logger logger) {
         this.server = server;
         this.logger = logger;
-
     }
 
     @Subscribe

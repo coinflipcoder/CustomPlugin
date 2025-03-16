@@ -21,11 +21,12 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 public class NickCommand implements SimpleCommand {
-    private static final LuckPerms luckPermsAPI = LuckPermsProvider.get();
-    static MiniMessage mm = MiniMessage.miniMessage();
-    static Component invalidUsage = mm.deserialize("<red>Invalid command usage.");
-    static Component invalidPermission = mm.deserialize("<red>You don't have permission to use this command.");
     private final ProxyServer server;
+    private static final LuckPerms luckPermsAPI = LuckPermsProvider.get();
+    private static final MiniMessage mm = MiniMessage.miniMessage();
+
+    static final Component invalidUsage = mm.deserialize("<red>Invalid command usage.");
+    static final Component invalidPermission = mm.deserialize("<red>You don't have permission to use this command.");
 
     public NickCommand(ProxyServer server) { this.server = server; }
 

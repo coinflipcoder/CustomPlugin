@@ -16,9 +16,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public final class AfkCommand implements RawCommand {
-    static MiniMessage mm = MiniMessage.miniMessage();
-    private static final LuckPerms luckPermsAPI = LuckPermsProvider.get();
     private final ProxyServer server;
+    private static final LuckPerms luckPermsAPI = LuckPermsProvider.get();
+    private static final MiniMessage mm = MiniMessage.miniMessage();
 
     public AfkCommand(ProxyServer server) {
         this.server = server;

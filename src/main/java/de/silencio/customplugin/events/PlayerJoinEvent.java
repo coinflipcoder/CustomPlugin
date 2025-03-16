@@ -10,7 +10,7 @@ import net.luckperms.api.node.types.PrefixNode;
 import java.util.Objects;
 
 public class PlayerJoinEvent {
-    LuckPerms luckPermsAPI = LuckPermsProvider.get();
+    private static final LuckPerms luckPermsAPI = LuckPermsProvider.get();
 
     @Subscribe
     public void onPlayerJoin(PostLoginEvent event) {
@@ -20,6 +20,5 @@ public class PlayerJoinEvent {
             user.data().add(PrefixNode.builder(event.getPlayer().getUsername(), 100).build());
             luckPermsAPI.getUserManager().saveUser(user);
         }
-        // do something here
     }
 }
