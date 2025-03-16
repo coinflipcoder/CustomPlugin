@@ -112,7 +112,7 @@ public final class InfoCommand implements SimpleCommand {
         Player p = (Player) invocation.source();
 
         if (p.getCurrentServer().get().getServerInfo().getName().equals("survival")) {
-            return CompletableFuture.completedFuture(List.of("mods", "commands", "changes", "crafting"));
+            return CompletableFuture.completedFuture(List.of("commands", "changes", "crafting"));
         }
 
         return CompletableFuture.completedFuture(List.of());
