@@ -23,7 +23,7 @@ public final class InfoCommand implements SimpleCommand {
             case "lobby":
                 Component headerLobby = mm.deserialize("<aqua>Hello! Welcome to the network.");
                 Component lobbyCommand = mm.deserialize("<gray>This is the lobby. You can return here anytime using <gold>/hub <gray>or <gold>/lobby<gray>.");
-                Component nickCommand = mm.deserialize("<gray>Use <gold>/nick <nickname> <gray>to change your displayed name across the network. You may use colors with the format <aqua>&#ffffff <gray>or <aqua>&6.");
+                Component nickCommand = mm.deserialize("<gray>Use <gold><hover:show_text:'<gold>Click me!'><click:SUGGEST_COMMAND:/nick >/nick <nickname></click></hover> <gray>to change your displayed name across the network. This uses the <gold><u><hover:show_text:'<gold>Click me!'><click:open_url:'https://docs.advntr.dev/minimessage/format.html'>MiniMessage</click></hover></u><gray> format. <gold><u><hover:show_text:'<gold>Click me!'><click:open_url:'https://www.birdflop.com/resources/rgb/'>This</click></hover></u><gray> site can help you with that, set Color Format to 'MiniMessage'.");
                 Component infoCommand = mm.deserialize("<gray>This command is different for every server! Try it on the survival server!");
 
                 invocation.source().sendMessage(emptyLine);
