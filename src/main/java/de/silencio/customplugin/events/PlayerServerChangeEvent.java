@@ -29,7 +29,7 @@ public class PlayerServerChangeEvent {
         final RegisteredServer previousServer = event.getPreviousServer().orElse(null);
         if (previousServer == null) return;
 
-        final Component playerServerChangeMessage = mm.deserialize("<dark_gray>[<aqua>➟<dark_gray>]<reset> " + prefix + " <dark_gray>joined <gold>" + event.getServer().getServerInfo().getName());
+        final Component playerServerChangeMessage = mm.deserialize("<dark_gray>[<aqua>➟<dark_gray>]<reset> " + prefix + " <dark_gray>joined <dark_aqua>" + event.getServer().getServerInfo().getName());
         server.sendMessage(playerServerChangeMessage);
     }
 }
