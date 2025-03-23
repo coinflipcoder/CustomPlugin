@@ -78,6 +78,9 @@ public class CustomPlugin {
                 .aliases("customhelp")
                 .plugin(this)
                 .build();
+        CommandMeta kickCommandMeta = commandManager.metaBuilder("kick")
+                .plugin(this)
+                .build();
 
         // Listeners
         eventManager.register(this, new PlayerJoinEvent(server));
@@ -97,6 +100,7 @@ public class CustomPlugin {
         commandManager.register(networkUnbanCommandMeta, new NetworkUnbanCommand(server));
         commandManager.register(sayCommandMeta, new SayCommand(server));
         commandManager.register(helpCommandMeta, new HelpCommand(server, this));
+        commandManager.register(kickCommandMeta, new KickCommand(server));
 
         PacketEvents.getAPI().getEventManager().registerListener(new SafeServerPacket());
 
