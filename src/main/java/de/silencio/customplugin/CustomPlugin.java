@@ -11,8 +11,7 @@ import com.velocitypowered.api.plugin.Dependency;
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.proxy.ProxyServer;
 import de.silencio.customplugin.commands.*;
-import de.silencio.customplugin.events.PlayerJoinEvent;
-import de.silencio.customplugin.events.SafeServerPacket;
+import de.silencio.customplugin.events.*;
 import org.slf4j.Logger;
 
 @Plugin(
@@ -81,7 +80,10 @@ public class CustomPlugin {
                 .build();
 
         // Listeners
-        eventManager.register(this, new PlayerJoinEvent());
+        eventManager.register(this, new PlayerJoinEvent(server));
+        eventManager.register(this, new PlayerLeaveEvent(server));
+        eventManager.register(this, new PlayerServerChangeEvent(server));
+        eventManager.register(this, new PlayerMessageEvent(server));
 
         // Commands
         commandManager.register(nickCommandMeta, new NickCommand(server));
