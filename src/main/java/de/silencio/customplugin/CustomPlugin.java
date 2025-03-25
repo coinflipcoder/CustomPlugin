@@ -21,7 +21,7 @@ import java.nio.file.Path;
 @Plugin(
         id = "customplugin",
         name = "CustomPlugin",
-        version = BuildConstants.VERSION,
+        version = "1.4.1",
         description = "A custom plugin for my network needs.",
         url = "devlencio.net",
         authors = {"Silencio"},
@@ -41,7 +41,6 @@ public class CustomPlugin {
         this.server = server;
         this.logger = logger;
         this.banManager = new BanManager(this, dataDirectory);
-        logger.info("Custom plugin loaded");
     }
 
     @Subscribe
