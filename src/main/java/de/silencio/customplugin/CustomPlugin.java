@@ -9,10 +9,14 @@ import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.plugin.Dependency;
 import com.velocitypowered.api.plugin.Plugin;
+import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
 import de.silencio.customplugin.commands.*;
 import de.silencio.customplugin.events.*;
+import de.silencio.customplugin.managers.BanManager;
 import org.slf4j.Logger;
+
+import java.nio.file.Path;
 
 @Plugin(
         id = "customplugin",
@@ -29,11 +33,15 @@ import org.slf4j.Logger;
 public class CustomPlugin {
     private final Logger logger;
     private final ProxyServer server;
+    private final BanManager banManager;
+
 
     @Inject
-    public CustomPlugin(ProxyServer server, Logger logger) {
+    public CustomPlugin(ProxyServer server, Logger logger, @DataDirectory Path dataDirectory) {
         this.server = server;
         this.logger = logger;
+        this.banManager = new BanManager(this, dataDirectory);
+        logger.info("Custom plugin loaded");
     }
 
     @Subscribe
@@ -83,7 +91,7 @@ public class CustomPlugin {
                 .build();
 
         // Listeners
-        eventManager.register(this, new PlayerJoinEvent(server));
+        eventManager.register(this, new PlayerJoinEvent(server, this));
         eventManager.register(this, new PlayerLeaveEvent(server));
         eventManager.register(this, new PlayerServerChangeEvent(server));
         eventManager.register(this, new PlayerMessageEvent(server));
@@ -96,8 +104,8 @@ public class CustomPlugin {
         commandManager.register(lobbyCommandMeta, new LobbyCommand(server));
         commandManager.register(sendCommandMeta, new SendCommand(server));
         commandManager.register(sendAllCommandMeta, new SendAllCommand(server));
-        commandManager.register(networkBanCommandMeta, new NetworkBanCommand(server));
-        commandManager.register(networkUnbanCommandMeta, new NetworkUnbanCommand(server));
+        commandManager.register(networkBanCommandMeta, new NetworkBanCommand(server, this));
+        commandManager.register(networkUnbanCommandMeta, new NetworkUnbanCommand(server, this));
         commandManager.register(sayCommandMeta, new SayCommand(server));
         commandManager.register(helpCommandMeta, new HelpCommand(server, this));
         commandManager.register(kickCommandMeta, new KickCommand(server));
@@ -105,5 +113,13 @@ public class CustomPlugin {
         PacketEvents.getAPI().getEventManager().registerListener(new SafeServerPacket());
 
         logger.info("Custom Plugin started up.");
+    }
+
+    public BanManager getBanManager() {
+        return banManager;
+    }
+
+    public Logger getLogger() {
+        return logger;
     }
 }
