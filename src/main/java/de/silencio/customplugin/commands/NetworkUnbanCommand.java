@@ -4,8 +4,7 @@ import com.velocitypowered.api.command.SimpleCommand;
 import com.velocitypowered.api.proxy.ProxyServer;
 import de.silencio.customplugin.CustomPlugin;
 import de.silencio.customplugin.managers.BanManager;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.MiniMessage;
+import de.silencio.customplugin.managers.MessageManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +14,7 @@ public class NetworkUnbanCommand implements SimpleCommand {
     private final ProxyServer server;
     private final CustomPlugin plugin;
     private final BanManager banManager;
-    private static final MiniMessage mm = MiniMessage.miniMessage();
 
-    static final Component notBanned = mm.deserialize("<red>Player is not banned.");
-    static final Component invalidPlayer = mm.deserialize("<red>Player not found.");
-    static final Component invalidUsage = mm.deserialize("<red>Invalid command usage.");
-    final static Component invalidPermission = mm.deserialize("<red>You don't have permission to use this command.");
 
     public NetworkUnbanCommand(ProxyServer server, CustomPlugin plugin) {
         this.server = server;
@@ -32,13 +26,13 @@ public class NetworkUnbanCommand implements SimpleCommand {
     public void execute(final Invocation invocation) {
         // Check if the player has the permission to use this command
         if (!invocation.source().hasPermission("custom.networkunban") || !invocation.source().hasPermission("custom.*")) {
-            invocation.source().sendMessage(invalidPermission);
+            invocation.source().sendMessage(MessageManager.INVALID_PERMISSION);
             return;
         }
 
         // Check if the command was used correctly
         if (invocation.arguments().length != 1) {
-            invocation.source().sendMessage(invalidUsage);
+            invocation.source().sendMessage(MessageManager.INVALID_USAGE);
             return;
         }
 
@@ -47,19 +41,18 @@ public class NetworkUnbanCommand implements SimpleCommand {
             server.getScheduler().buildTask(plugin, () -> {
                 if (uuid == null) {
                     // player does not exist
-                    invocation.source().sendMessage(invalidPlayer);
+                    invocation.source().sendMessage(MessageManager.INVALID_PLAYER);
                     return;
                 }
                 if (!banManager.isBanned(uuid)) {
-                    invocation.source().sendMessage(notBanned);
+                    invocation.source().sendMessage(MessageManager.NOT_BANNED);
                     return;
                 }
                 // Unban the player
                 this.banManager.unbanPlayer(uuid);
 
                 // Send a message to the player who executed the command
-                final Component successMessage = mm.deserialize("<green>Successfully unbanned " + invocation.arguments()[0] + ".");
-                invocation.source().sendMessage(successMessage);
+                invocation.source().sendMessage(MessageManager.unbanSuccess(invocation.arguments()[0]));
             }).schedule();
         });
     }

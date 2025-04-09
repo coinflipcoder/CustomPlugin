@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.silencio.customplugin.CustomPlugin;
+import org.slf4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,7 +17,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
-import org.slf4j.Logger;
 
 public class BanManager {
     private final Logger logger;

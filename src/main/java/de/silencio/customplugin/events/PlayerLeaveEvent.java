@@ -2,11 +2,8 @@ package de.silencio.customplugin.events;
 
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.connection.DisconnectEvent;
-import com.velocitypowered.api.event.player.KickedFromServerEvent;
-import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ProxyServer;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.MiniMessage;
+import de.silencio.customplugin.managers.MessageManager;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
@@ -15,10 +12,7 @@ import java.util.Objects;
 
 public class PlayerLeaveEvent {
     private static final LuckPerms luckPermsAPI = LuckPermsProvider.get();
-    private static final MiniMessage mm = MiniMessage.miniMessage();
     private final ProxyServer server;
-
-    static final Component kickMessage = mm.deserialize("<red>You have been kicked from the server.");
 
     public PlayerLeaveEvent(ProxyServer server) { this.server = server; }
 
@@ -34,7 +28,6 @@ public class PlayerLeaveEvent {
         User user = luckPermsAPI.getUserManager().getUser(event.getPlayer().getUniqueId());
         String prefix = Objects.requireNonNull(user).getCachedData().getMetaData().getPrefix();
 
-        final Component playerLeaveMessage = mm.deserialize("<dark_gray>[<red>-<dark_gray>]<reset> " + prefix);
-        server.sendMessage(playerLeaveMessage);
+        server.sendMessage(MessageManager.leave(prefix));
     }
 }

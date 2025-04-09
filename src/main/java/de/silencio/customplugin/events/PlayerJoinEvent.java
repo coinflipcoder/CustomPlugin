@@ -6,8 +6,7 @@ import com.velocitypowered.api.event.connection.PostLoginEvent;
 import com.velocitypowered.api.proxy.ProxyServer;
 import de.silencio.customplugin.CustomPlugin;
 import de.silencio.customplugin.managers.BanManager;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.MiniMessage;
+import de.silencio.customplugin.managers.MessageManager;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
@@ -17,11 +16,8 @@ import java.util.Objects;
 
 public class PlayerJoinEvent {
     private static final LuckPerms luckPermsAPI = LuckPermsProvider.get();
-    private static final MiniMessage mm = MiniMessage.miniMessage();
     private final ProxyServer server;
     private final BanManager banManager;
-
-    final static Component banMessage = mm.deserialize("<red>You are banned from the network.");
 
     public PlayerJoinEvent(ProxyServer server, CustomPlugin plugin) {
         this.server = server;
@@ -31,7 +27,7 @@ public class PlayerJoinEvent {
     @Subscribe
     public void onLogin(LoginEvent event) {
         if (banManager.isBanned(event.getPlayer().getUniqueId())) {
-            event.setResult(LoginEvent.ComponentResult.denied(banMessage));
+            event.setResult(LoginEvent.ComponentResult.denied(MessageManager.BAN_MESSAGE));
         }
     }
 
@@ -48,7 +44,6 @@ public class PlayerJoinEvent {
         }
 
         // Send player logged in message globally
-        final Component playerJoinMessage = mm.deserialize("<dark_gray>[<dark_green>+<dark_gray>]<reset> " + prefix);
-        server.sendMessage(playerJoinMessage);
+        server.sendMessage(MessageManager.join(prefix));
     }
 }

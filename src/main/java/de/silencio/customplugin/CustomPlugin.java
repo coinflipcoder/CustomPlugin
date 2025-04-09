@@ -5,8 +5,8 @@ import com.google.inject.Inject;
 import com.velocitypowered.api.command.CommandManager;
 import com.velocitypowered.api.command.CommandMeta;
 import com.velocitypowered.api.event.EventManager;
-import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.event.Subscribe;
+import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.plugin.Dependency;
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
@@ -21,7 +21,7 @@ import java.nio.file.Path;
 @Plugin(
         id = "customplugin",
         name = "CustomPlugin",
-        version = "1.4.1",
+        version = "1.5",
         description = "A custom plugin for my network needs.",
         url = "devlencio.net",
         authors = {"Silencio"},

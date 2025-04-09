@@ -3,15 +3,12 @@ package de.silencio.customplugin.commands;
 import com.velocitypowered.api.command.SimpleCommand;
 import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ProxyServer;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.MiniMessage;
+import de.silencio.customplugin.managers.MessageManager;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
 import net.luckperms.api.node.NodeType;
 import net.luckperms.api.node.types.PrefixNode;
-import org.checkerframework.checker.units.qual.Prefix;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +20,6 @@ import java.util.stream.Collectors;
 public class NickCommand implements SimpleCommand {
     private final ProxyServer server;
     private static final LuckPerms luckPermsAPI = LuckPermsProvider.get();
-    private static final MiniMessage mm = MiniMessage.miniMessage();
-
-    static final Component invalidUsage = mm.deserialize("<red>Invalid command usage.");
-    static final Component invalidPermission = mm.deserialize("<red>You don't have permission to use this command.");
 
     public NickCommand(ProxyServer server) { this.server = server; }
 
@@ -34,6 +27,7 @@ public class NickCommand implements SimpleCommand {
     public void execute(final Invocation invocation) {
         Player player = (Player) invocation.source();
 
+        // Reset the players nickname
         if (invocation.arguments().length == 0) {
             // Get the luckperms user
             User user = luckPermsAPI.getUserManager().getUser(player.getUniqueId());
@@ -47,6 +41,7 @@ public class NickCommand implements SimpleCommand {
             // Save the user
             luckPermsAPI.getUserManager().saveUser(user);
 
+        // Set the players nickname
         } else if (invocation.arguments().length == 1) {
             // Get the luckperms user
             User user = luckPermsAPI.getUserManager().getUser(player.getUniqueId());
@@ -60,11 +55,12 @@ public class NickCommand implements SimpleCommand {
             // Save the user
             luckPermsAPI.getUserManager().saveUser(user);
 
+        // Set another players nickname
         } else if (invocation.arguments().length == 2) {
 
             // Check if the player has the permission to change other players nicknames
             if (!invocation.source().hasPermission("custom.nickother") || invocation.source().hasPermission("custom.*")) {
-                invocation.source().sendMessage(invalidPermission);
+                invocation.source().sendMessage(MessageManager.INVALID_PERMISSION);
                 return;
             }
 
@@ -79,7 +75,7 @@ public class NickCommand implements SimpleCommand {
 
             // Save the user
             luckPermsAPI.getUserManager().saveUser(user);
-        } else invocation.source().sendMessage(invalidUsage);
+        } else invocation.source().sendMessage(MessageManager.INVALID_USAGE);
     }
 
     private void clearPrefix(User user) {

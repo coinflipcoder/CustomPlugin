@@ -3,8 +3,7 @@ package de.silencio.customplugin.events;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.player.PlayerChatEvent;
 import com.velocitypowered.api.proxy.ProxyServer;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.MiniMessage;
+import de.silencio.customplugin.managers.MessageManager;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
@@ -13,7 +12,6 @@ import java.util.Objects;
 
 public class PlayerMessageEvent {
     private static final LuckPerms luckPermsAPI = LuckPermsProvider.get();
-    private static final MiniMessage mm = MiniMessage.miniMessage();
     private final ProxyServer server;
 
     public PlayerMessageEvent(ProxyServer server) { this.server = server; }
@@ -32,7 +30,6 @@ public class PlayerMessageEvent {
         if (serverName == null) serverName = "Unknown";
 
         // Send player chat message globally
-        final Component playerChatMessage = mm.deserialize("<dark_gray>[<dark_aqua>" + serverName + "<dark_gray>]<reset> " + prefix + "<dark_gray>: <reset>" + event.getMessage());
-        server.sendMessage(playerChatMessage);
+        server.sendMessage(MessageManager.chat(prefix, serverName, event.getMessage()));
     }
 }

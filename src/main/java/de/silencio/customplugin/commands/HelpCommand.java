@@ -4,6 +4,7 @@ import com.google.common.base.Joiner;
 import com.velocitypowered.api.command.SimpleCommand;
 import com.velocitypowered.api.proxy.ProxyServer;
 import de.silencio.customplugin.CustomPlugin;
+import de.silencio.customplugin.managers.MessageManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 
@@ -17,9 +18,6 @@ public class HelpCommand implements SimpleCommand {
     private final List<String> commandList = new ArrayList<>();
     private static final MiniMessage mm = MiniMessage.miniMessage();
 
-    final static Component header = mm.deserialize("<gold>These are all registered command, including aliases:");
-    final static Component invalidPermission = mm.deserialize("<red>You don't have permission to use this command.");
-
     public HelpCommand(ProxyServer server, CustomPlugin plugin) {
         this.server = server;
         this.plugin = plugin;
@@ -28,11 +26,11 @@ public class HelpCommand implements SimpleCommand {
     @Override
     public void execute(final Invocation invocation) {
         if (!invocation.source().hasPermission("custom.help") || !invocation.source().hasPermission("custom.*")) {
-            invocation.source().sendMessage(invalidPermission);
+            invocation.source().sendMessage(MessageManager.INVALID_PERMISSION);
             return;
         }
 
-        invocation.source().sendMessage(header);
+        invocation.source().sendMessage(MessageManager.HELP_HEADER);
 
         for (String alias : server.getCommandManager().getAliases()) {
             if (server.getCommandManager().getCommandMeta(alias).getPlugin() == plugin) { commandList.add(alias); }

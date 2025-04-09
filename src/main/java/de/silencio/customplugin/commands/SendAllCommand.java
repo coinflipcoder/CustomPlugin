@@ -4,8 +4,7 @@ import com.velocitypowered.api.command.SimpleCommand;
 import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ProxyServer;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.MiniMessage;
+import de.silencio.customplugin.managers.MessageManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,16 +12,13 @@ import java.util.concurrent.CompletableFuture;
 
 public class SendAllCommand implements SimpleCommand {
     private final ProxyServer server;
-    private static final MiniMessage mm = MiniMessage.miniMessage();
-
-    final static Component invalidPermission = mm.deserialize("<red>You don't have permission to use this command.");
 
     public SendAllCommand(ProxyServer server) { this.server = server; }
 
     @Override
     public void execute(final Invocation invocation) {
         if (!invocation.source().hasPermission("custom.sendall") || !invocation.source().hasPermission("custom.*")) {
-            invocation.source().sendMessage(invalidPermission);
+            invocation.source().sendMessage(MessageManager.INVALID_PERMISSION);
             return;
         }
         if (invocation.arguments().length == 1) {
