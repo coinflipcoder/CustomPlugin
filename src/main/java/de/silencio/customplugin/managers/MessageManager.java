@@ -54,6 +54,7 @@ public class MessageManager {
                                      <bold><blue>»</blue></bold> <gray> Infinity and mending are combinable.
                                      <bold><blue>»</blue></bold> <gray> Villagers follow you when holding emeralds.
                                      <bold><blue>»</blue></bold> <gray> Villager discounts are shared between players.
+                                     <bold><blue>»</blue></bold> <gray> Beacon range is doubled to 200x200, with infinite range below.
                                     """);
     public static final Component CRAFTING = mm.deserialize("""
                                     <bold><gold>Crafting Tweaks:</gold></bold>
