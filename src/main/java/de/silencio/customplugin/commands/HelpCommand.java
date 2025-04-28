@@ -32,6 +32,8 @@ public class HelpCommand implements SimpleCommand {
 
         invocation.source().sendMessage(MessageManager.HELP_HEADER);
 
+        commandList.clear();
+
         for (String alias : server.getCommandManager().getAliases()) {
             if (server.getCommandManager().getCommandMeta(alias).getPlugin() == plugin) { commandList.add(alias); }
         }
