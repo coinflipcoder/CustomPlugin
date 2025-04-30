@@ -24,6 +24,10 @@ public class MessageManager {
     private static final String CHAT_MESSAGE_TEMPLATE = "<dark_gray>[<dark_aqua><server><dark_gray>]<reset> <name><dark_gray>:<reset> <message>";
     private static final String SWITCH_SERVER_TEMPLATE = "<dark_gray>[<aqua>➟<dark_gray>]<reset> <name> <dark_gray>joined <dark_aqua><server>";
 
+    // Playtime
+    public static final String PLAYTIME_TEMPLATE = "<aqua>Total Playtime: <gold><total><aqua><newline>Current Playtime: <gold><current>";
+    public static final Component PLAYTIME_RELOAD = mm.deserialize("<gold>Playtime has been reloaded.");
+
     // Ban Manager
     public static final Component BAN_MESSAGE = mm.deserialize("<red>You are banned from the network.");
     public static final Component KICK_MESSAGE = mm.deserialize("<red>You have been kicked from the server.");
@@ -112,6 +116,13 @@ public class MessageManager {
         return mm.deserialize(SWITCH_SERVER_TEMPLATE,
                 Placeholder.parsed("server", server),
                 Placeholder.parsed("name", player)
+        );
+    }
+
+    public static Component playTime(String total, String current) {
+        return mm.deserialize(PLAYTIME_TEMPLATE,
+                Placeholder.parsed("total", total),
+                Placeholder.parsed("current", current)
         );
     }
 }

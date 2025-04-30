@@ -14,6 +14,7 @@ import com.velocitypowered.api.proxy.ProxyServer;
 import de.silencio.customplugin.commands.*;
 import de.silencio.customplugin.events.*;
 import de.silencio.customplugin.managers.BanManager;
+import de.silencio.customplugin.managers.PlaytimeManager;
 import org.slf4j.Logger;
 
 import java.nio.file.Path;
@@ -34,6 +35,7 @@ public class CustomPlugin {
     private final Logger logger;
     private final ProxyServer server;
     private final BanManager banManager;
+    private final PlaytimeManager playtimeManager;
 
 
     @Inject
@@ -41,6 +43,7 @@ public class CustomPlugin {
         this.server = server;
         this.logger = logger;
         this.banManager = new BanManager(this, dataDirectory);
+        this.playtimeManager = new PlaytimeManager(this, dataDirectory);
     }
 
     @Subscribe
@@ -88,10 +91,16 @@ public class CustomPlugin {
         CommandMeta kickCommandMeta = commandManager.metaBuilder("kick")
                 .plugin(this)
                 .build();
+        CommandMeta playtimeCommandMeta = commandManager.metaBuilder("playtime")
+                .plugin(this)
+                .build();
+        CommandMeta reloadPlaytimeCommandMeta = commandManager.metaBuilder("reloadplaytime")
+                .plugin(this)
+                .build();
 
         // Listeners
         eventManager.register(this, new PlayerJoinEvent(server, this));
-        eventManager.register(this, new PlayerLeaveEvent(server));
+        eventManager.register(this, new PlayerLeaveEvent(server, this));
         eventManager.register(this, new PlayerServerChangeEvent(server));
         eventManager.register(this, new PlayerMessageEvent(server));
 
@@ -108,6 +117,8 @@ public class CustomPlugin {
         commandManager.register(sayCommandMeta, new SayCommand(server));
         commandManager.register(helpCommandMeta, new HelpCommand(server, this));
         commandManager.register(kickCommandMeta, new KickCommand(server));
+        commandManager.register(playtimeCommandMeta, new PlaytimeCommand(server, this));
+        commandManager.register(reloadPlaytimeCommandMeta, new ReloadPlaytimeCommand(server, this));
 
         //PacketEvents.getAPI().getEventManager().registerListener(new SafeServerPacket());
 
@@ -116,6 +127,10 @@ public class CustomPlugin {
 
     public BanManager getBanManager() {
         return banManager;
+    }
+
+    public PlaytimeManager getPlaytimeManager() {
+        return playtimeManager;
     }
 
     public Logger getLogger() {
