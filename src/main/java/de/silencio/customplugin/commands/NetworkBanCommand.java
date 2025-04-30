@@ -45,7 +45,7 @@ public class NetworkBanCommand implements SimpleCommand {
                 server.getScheduler().buildTask(plugin, () -> {
                     if (uuid == null) {
                         // player really does not exist
-                        invocation.source().sendMessage(MessageManager.INVALID_USAGE);
+                        invocation.source().sendMessage(MessageManager.INVALID_PLAYER);
                         return;
                     }
                     if (banManager.isBanned(uuid)) {
