@@ -22,7 +22,7 @@ import java.nio.file.Path;
 @Plugin(
         id = "customplugin",
         name = "CustomPlugin",
-        version = "1.5",
+        version = "1.6",
         description = "A custom plugin for my network needs.",
         url = "devlencio.net",
         authors = {"Silencio"},
