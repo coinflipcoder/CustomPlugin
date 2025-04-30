@@ -59,7 +59,7 @@ public class NickCommand implements SimpleCommand {
         } else if (invocation.arguments().length == 2) {
 
             // Check if the player has the permission to change other players nicknames
-            if (!invocation.source().hasPermission("custom.nickother") || invocation.source().hasPermission("custom.*")) {
+            if (!invocation.source().hasPermission("custom.nickother") || !invocation.source().hasPermission("custom.*")) {
                 invocation.source().sendMessage(MessageManager.INVALID_PERMISSION);
                 return;
             }
@@ -92,7 +92,7 @@ public class NickCommand implements SimpleCommand {
     @Override
     public CompletableFuture<List<String>> suggestAsync(final Invocation invocation) {
         List<String> returnList = new ArrayList<>(List.of("<Nickname>"));
-        if (invocation.source().hasPermission("custom.nickother") || invocation.source().hasPermission("custom.*")) {
+        if (invocation.source().hasPermission("custom.nickother") || !invocation.source().hasPermission("custom.*")) {
             for (Player p : server.getAllPlayers()) returnList.add(p.getUsername());
         }
         return CompletableFuture.completedFuture(returnList);
