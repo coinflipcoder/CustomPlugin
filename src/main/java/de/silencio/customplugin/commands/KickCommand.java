@@ -29,9 +29,11 @@ public class KickCommand implements SimpleCommand {
         };
 
         Player target = server.getPlayer(invocation.arguments()[0]).orElse(null);
-        if (target == null) player.sendMessage(MessageManager.INVALID_PLAYER);
+        if (target == null) {
+            player.sendMessage(MessageManager.INVALID_PLAYER);
+            return;
+        }
 
-        assert target != null;
         target.disconnect(MessageManager.KICK_MESSAGE);
     }
 
