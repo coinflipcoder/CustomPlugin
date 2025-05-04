@@ -44,7 +44,7 @@ public class MessageManager {
     // Info Command
     public static final Component CHANGES = mm.deserialize("""
                                     <bold><gold>Changes:</gold></bold>
-                                     <bold><blue>»</blue></bold> <gray> Axes can be used as weapons. They also support the Sharpness enchantment.
+                                     <bold><blue>»</blue></bold> <gray> Axes support the Sharpness enchantment.
                                      <bold><blue>»</blue></bold> <gray> Sneaking twice whilst looking down allows you to sit anywhere.
                                      <bold><blue>»</blue></bold> <gray> Right clicking a crop with a hoe automatically harvests and replants it.
                                      <bold><blue>»</blue></bold> <gray> Crop Trampling is disabled.
@@ -54,11 +54,11 @@ public class MessageManager {
                                      <bold><blue>»</blue></bold> <gray> Mobs can be silenced using a name tag called "silence me".
                                      <bold><blue>»</blue></bold> <gray> Revamped anvil xp costs.
                                      <bold><blue>»</blue></bold> <gray> The height limit is 2032 blocks.
-                                     <bold><blue>»</blue></bold> <gray> You dont need an arrow in your inventory to use infinity.
+                                     <bold><blue>»</blue></bold> <gray> You don't need an arrow in your inventory to use infinity.
                                      <bold><blue>»</blue></bold> <gray> Infinity and mending are combinable.
                                      <bold><blue>»</blue></bold> <gray> Villagers follow you when holding emeralds.
                                      <bold><blue>»</blue></bold> <gray> Villager discounts are shared between players.
-                                     <bold><blue>»</blue></bold> <gray> Beacon range is doubled to 200x200, with infinite range below.
+                                     <bold><blue>»</blue></bold> <gray> Beacon base range is 50, with 25 per level and infinite range below.
                                     """);
     public static final Component CRAFTING = mm.deserialize("""
                                     <bold><gold>Crafting Tweaks:</gold></bold>
