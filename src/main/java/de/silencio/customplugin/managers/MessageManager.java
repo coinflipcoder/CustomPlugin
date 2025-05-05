@@ -38,6 +38,7 @@ public class MessageManager {
 
     // Commands
     public static final Component MAP_MESSAGE = mm.deserialize("<aqua>The map can be viewed <gold><u><hover:show_text:'<gold>Click me!'><click:open_url:'https://map.devlencio.net'>here</click></hover></u></gold><aqua>.");
+    public static final Component DISCORD_MESSAGE = mm.deserialize("<aqua>Join the discord server <gold><u><hover:show_text:'<gold>Click me!'><click:open_url:'https://discord.devlencio.net'>here</click></hover></u></gold><aqua>.");
     public static final Component NO_INFO = mm.deserialize("<red>No info for this server.");
     public static final Component HELP_HEADER = mm.deserialize("<gold>These are all registered command, including aliases:");
 
@@ -78,7 +79,8 @@ public class MessageManager {
                                      <bold><blue>»</blue></bold> <gray> /tpa <player> -> Request to teleport to someone.
                                      <bold><blue>»</blue></bold> <gray> /afk -> Sets your status to AFK.
                                      <bold><blue>»</blue></bold> <gray> /nick <nickname> -> Changes your displayed name.
-                                     <bold><blue>»</blue></bold> <gray> /map -> Link to the browser map.""");
+                                     <bold><blue>»</blue></bold> <gray> /map -> Link to the browser map.
+                                     <bold><blue>»</blue></bold> <gray> /discord -> Link to the discord server.""");
 
     public static Component nowAfk(String player) {
         return mm.deserialize(NOW_AFK_TEMPLATE, Placeholder.parsed("name", player));

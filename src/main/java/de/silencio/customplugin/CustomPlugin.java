@@ -97,6 +97,9 @@ public class CustomPlugin {
         CommandMeta reloadPlaytimeCommandMeta = commandManager.metaBuilder("reloadplaytime")
                 .plugin(this)
                 .build();
+        CommandMeta discordCommandMeta = commandManager.metaBuilder("discord")
+                .plugin(this)
+                .build();
 
         // Listeners
         eventManager.register(this, new PlayerJoinEvent(server, this));
@@ -107,6 +110,7 @@ public class CustomPlugin {
         // Commands
         commandManager.register(nickCommandMeta, new NickCommand(server));
         commandManager.register(mapCommandMeta, new MapCommand());
+        commandManager.register(discordCommandMeta, new DiscordCommand());
         commandManager.register(infoCommandMeta, new InfoCommand());
         commandManager.register(afkCommandMeta, new AfkCommand(server));
         commandManager.register(lobbyCommandMeta, new LobbyCommand(server));
