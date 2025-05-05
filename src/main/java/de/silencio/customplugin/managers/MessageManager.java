@@ -79,6 +79,7 @@ public class MessageManager {
                                      <bold><blue>»</blue></bold> <gray> /tpa <player> -> Request to teleport to someone.
                                      <bold><blue>»</blue></bold> <gray> /afk -> Sets your status to AFK.
                                      <bold><blue>»</blue></bold> <gray> /nick <nickname> -> Changes your displayed name.
+                                     <bold><blue>»</blue></bold> <gray> /playtime -> View your total time played.
                                      <bold><blue>»</blue></bold> <gray> /map -> Link to the browser map.
                                      <bold><blue>»</blue></bold> <gray> /discord -> Link to the discord server.""");
 
