@@ -34,16 +34,15 @@ public final class InfoCommand implements SimpleCommand {
             case "survival":
                 if (invocation.arguments().length == 0) {
                     Component header = mm.deserialize("<aqua>Hello! Welcome to the Survival Server. Here is some useful information about it.");
-                    Component disclaimer = mm.deserialize("<gray>This server is using Fabric to run a multitude of server side mods. No mods are needed for you to play.");
                     Component sections = mm.deserialize("<aqua>Use these commands to view individual sections:");
-                    Component commands = mm.deserialize(" <gray>/info</gray> <gold>commands:</gold> <gray>-> Information commands.");
-                    Component changes = mm.deserialize("  <gray>/info</gray> <gold>changes:</gold> <gray>-> Information about small changes and QOL tweaks.");
-                    Component crafting = mm.deserialize(" <gray>/info</gray> <gold>crafting:</gold> <gray>-> Information about new and altered crafting recipes.");
+                    Component commands = mm.deserialize(" <gray>/info</gray> <gold>commands<gray>: -> Information commands.");
+                    Component changes = mm.deserialize("  <gray>/info</gray> <gold>changes<gray>: -> Information about small changes and QOL tweaks.");
+                    Component crafting = mm.deserialize(" <gray>/info</gray> <gold>crafting<gray>: -> Information about new and altered crafting recipes.");
 
                     invocation.source().sendMessage(MessageManager.EMPTY);
                     invocation.source().sendMessage(header);
                     invocation.source().sendMessage(MessageManager.EMPTY);
-                    invocation.source().sendMessage(disclaimer);
+                    invocation.source().sendMessage(MessageManager.FABRIC_DISCLAIMER);
                     invocation.source().sendMessage(MessageManager.EMPTY);
                     invocation.source().sendMessage(sections);
                     invocation.source().sendMessage(commands);
@@ -54,21 +53,31 @@ public final class InfoCommand implements SimpleCommand {
                     switch (invocation.arguments()[0]) {
                         case "changes":
                             invocation.source().sendMessage(MessageManager.EMPTY);
-                            invocation.source().sendMessage(MessageManager.CHANGES);
+                            invocation.source().sendMessage(MessageManager.SURVIVAL_CHANGES);
                             return;
                         case "crafting":
                             invocation.source().sendMessage(MessageManager.EMPTY);
-                            invocation.source().sendMessage(MessageManager.CRAFTING);
+                            invocation.source().sendMessage(MessageManager.SURVIVAL_CRAFTING);
                             return;
                         case "commands":
                             invocation.source().sendMessage(MessageManager.EMPTY);
-                            invocation.source().sendMessage(MessageManager.COMMANDS);
+                            invocation.source().sendMessage(MessageManager.SURVIVAL_COMMANDS);
                             return;
                         default:
                             invocation.source().sendMessage(MessageManager.INVALID_USAGE);
                             return;
                     }
                 }
+            case "creative":
+                Component headerCreative = mm.deserialize("<aqua>Hello! Welcome to the Creative Server. Here is some useful information about it.");
+
+                invocation.source().sendMessage(MessageManager.EMPTY);
+                invocation.source().sendMessage(headerCreative);
+                invocation.source().sendMessage(MessageManager.EMPTY);
+                invocation.source().sendMessage(MessageManager.FABRIC_DISCLAIMER);
+                invocation.source().sendMessage(MessageManager.EMPTY);
+                invocation.source().sendMessage(MessageManager.CREATIVE_COMMANDS);
+                return;
             default: invocation.source().sendMessage(MessageManager.NO_INFO);
         }
     }

@@ -43,7 +43,8 @@ public class MessageManager {
     public static final Component HELP_HEADER = mm.deserialize("<gold>These are all registered command, including aliases:");
 
     // Info Command
-    public static final Component CHANGES = mm.deserialize("""
+    public static final Component FABRIC_DISCLAIMER = mm.deserialize("<gray>This server is using Fabric to run a multitude of server side mods. No mods are needed for you to play.");
+    public static final Component SURVIVAL_CHANGES = mm.deserialize("""
                                     <bold><gold>Changes:</gold></bold>
                                      <bold><blue>»</blue></bold> <gray> Axes support the Sharpness enchantment.
                                      <bold><blue>»</blue></bold> <gray> Sneaking twice whilst looking down allows you to sit anywhere.
@@ -51,6 +52,7 @@ public class MessageManager {
                                      <bold><blue>»</blue></bold> <gray> Crop Trampling is disabled.
                                      <bold><blue>»</blue></bold> <gray> Timber is installed. Shift to cut down the entire tree.
                                      <bold><blue>»</blue></bold> <gray> Concrete powder can be converted when dropped into a water filled cauldron.
+                                     <bold><blue>»</blue></bold> <gray> Dirt can be converted to mud when dropped into a water filled cauldron.
                                      <bold><blue>»</blue></bold> <gray> Nether portals can have any shape or size.
                                      <bold><blue>»</blue></bold> <gray> Mobs can be silenced using a name tag called "silence me".
                                      <bold><blue>»</blue></bold> <gray> Revamped anvil xp costs.
@@ -59,19 +61,25 @@ public class MessageManager {
                                      <bold><blue>»</blue></bold> <gray> Infinity and mending are combinable.
                                      <bold><blue>»</blue></bold> <gray> Villagers follow you when holding emeralds.
                                      <bold><blue>»</blue></bold> <gray> Villager discounts are shared between players.
+                                     <bold><blue>»</blue></bold> <gray> Husks drop sand.
+                                     <bold><blue>»</blue></bold> <gray> Players and mobs drop their heads when killed.
+                                     <bold><blue>»</blue></bold> <gray> Budding Amethysts can be mined with silk touch.
                                      <bold><blue>»</blue></bold> <gray> Beacon base range is 50, with 25 per level and infinite range below.
                                     """);
-    public static final Component CRAFTING = mm.deserialize("""
+    public static final Component SURVIVAL_CRAFTING = mm.deserialize("""
                                     <bold><gold>Crafting Tweaks:</gold></bold>
                                      <bold><blue>»</blue></bold> <gray> Ice can be unpacked into its former items.
                                      <bold><blue>»</blue></bold> <gray> Increased the amount of trapdoors, bark, stairs, bricks and carpets crafted.
-                                     <bold><blue>»</blue></bold> <gray> Coal can be crafted into black dye.
+                                     <bold><blue>»</blue></bold> <gray> Coal and Charcoal can be crafted into black dye.
                                      <bold><blue>»</blue></bold> <gray> Many recipes like bread, paper or shulker boxes are now shapeless.
                                      <bold><blue>»</blue></bold> <gray> You can dye blocks with already dyed blocks.
                                      <bold><blue>»</blue></bold> <gray> Sandstone and its variants can be dyed into their red variant using red dye.
                                      <bold><blue>»</blue></bold> <gray> Blackstone can now replace cobblestone in any recipe.
-                                     <bold><blue>»</blue></bold> <gray> Concrete powder can be smelted into colored glass.""");
-    public static final Component COMMANDS = mm.deserialize("""
+                                     <bold><blue>»</blue></bold> <gray> Individual paintings can be selected in a stonecutter.
+                                     <bold><blue>»</blue></bold> <gray> Mini blocks can be crafted in a stonecutter.
+                                     <bold><blue>»</blue></bold> <gray> Concrete powder can be smelted into colored glass.
+                                    """);
+    public static final Component SURVIVAL_COMMANDS = mm.deserialize("""
                                     <bold><gold>Commands:</gold></bold>
                                      <bold><blue>»</blue></bold> <gray> /home set <name> -> Set an new home. You can set up to three.
                                      <bold><blue>»</blue></bold> <gray> /home tp <name> -> Teleport to a home.
@@ -81,7 +89,23 @@ public class MessageManager {
                                      <bold><blue>»</blue></bold> <gray> /nick <nickname> -> Changes your displayed name.
                                      <bold><blue>»</blue></bold> <gray> /playtime -> View your total time played.
                                      <bold><blue>»</blue></bold> <gray> /map -> Link to the browser map.
-                                     <bold><blue>»</blue></bold> <gray> /discord -> Link to the discord server.""");
+                                     <bold><blue>»</blue></bold> <gray> /discord -> Link to the discord server.
+                                    """);
+
+    public static final Component CREATIVE_COMMANDS = mm.deserialize("""
+                                    <bold><gold>Commands:</gold></bold>
+                                     <bold><blue>»</blue></bold> <gray> /gmc -> Creative mode.
+                                     <bold><blue>»</blue></bold> <gray> /gms -> Survival mode.
+                                     <bold><blue>»</blue></bold> <gray> /gma -> Adventure mode.
+                                     <bold><blue>»</blue></bold> <gray> /gmsp -> Spectator mode.
+                                     <bold><blue>»</blue></bold> <gray> /overworld -> Teleport to the overworld.
+                                     <bold><blue>»</blue></bold> <gray> /nether -> Teleport to the nether.
+                                     <bold><blue>»</blue></bold> <gray> /end -> Teleport to the end.
+                                     <bold><blue>»</blue></bold> <gray> /rename <name> -> Renames your held item.
+                                     \s
+                                     <bold><blue>»</blue></bold> <gray> All of Worldedit is available.
+                                     <bold><blue>»</blue></bold> <gray> All of Axiom is available.
+                                    """);
 
     public static Component nowAfk(String player) {
         return mm.deserialize(NOW_AFK_TEMPLATE, Placeholder.parsed("name", player));
