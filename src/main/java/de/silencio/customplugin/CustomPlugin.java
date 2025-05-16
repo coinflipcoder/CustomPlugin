@@ -1,6 +1,6 @@
 package de.silencio.customplugin;
 
-//import com.github.retrooper.packetevents.PacketEvents;
+import com.github.retrooper.packetevents.PacketEvents;
 import com.google.inject.Inject;
 import com.velocitypowered.api.command.CommandManager;
 import com.velocitypowered.api.command.CommandMeta;
@@ -22,13 +22,13 @@ import java.nio.file.Path;
 @Plugin(
         id = "customplugin",
         name = "CustomPlugin",
-        version = "1.7",
+        version = "1.7.1",
         description = "A custom plugin for my network needs.",
         url = "devlencio.net",
         authors = {"Silencio"},
         dependencies = {
                 @Dependency(id = "luckperms"),
-                //@Dependency(id = "packetevents")
+                @Dependency(id = "packetevents")
         }
 )
 public class CustomPlugin {
@@ -124,7 +124,7 @@ public class CustomPlugin {
         commandManager.register(playtimeCommandMeta, new PlaytimeCommand(server, this));
         commandManager.register(reloadPlaytimeCommandMeta, new ReloadPlaytimeCommand(server, this));
 
-        //PacketEvents.getAPI().getEventManager().registerListener(new SafeServerPacket());
+        PacketEvents.getAPI().getEventManager().registerListener(new SafeServerPacket());
 
         logger.info("Custom Plugin started up.");
     }
