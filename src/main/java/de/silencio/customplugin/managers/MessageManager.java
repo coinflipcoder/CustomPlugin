@@ -42,6 +42,10 @@ public class MessageManager {
     public static final Component NO_INFO = mm.deserialize("<red>No info for this server.");
     public static final Component HELP_HEADER = mm.deserialize("<gold>These are all registered command, including aliases:");
 
+    // Notice Command
+    public static final Component SET_NOTICE = mm.deserialize("<gold>Notice set.");
+    public static final Component CLEAR_NOTICE = mm.deserialize("<gold>Notice cleared.");
+
     // Info Command
     public static final Component FABRIC_DISCLAIMER = mm.deserialize("<gray>This server is using Fabric to run a multitude of server side mods. No mods are needed for you to play.");
     public static final Component SURVIVAL_CHANGES = mm.deserialize("""

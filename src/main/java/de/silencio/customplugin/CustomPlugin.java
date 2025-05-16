@@ -14,6 +14,7 @@ import com.velocitypowered.api.proxy.ProxyServer;
 import de.silencio.customplugin.commands.*;
 import de.silencio.customplugin.events.*;
 import de.silencio.customplugin.managers.BanManager;
+import de.silencio.customplugin.managers.NoticeManager;
 import de.silencio.customplugin.managers.PlaytimeManager;
 import org.slf4j.Logger;
 
@@ -22,7 +23,7 @@ import java.nio.file.Path;
 @Plugin(
         id = "customplugin",
         name = "CustomPlugin",
-        version = "1.7.1",
+        version = "1.8",
         description = "A custom plugin for my network needs.",
         url = "devlencio.net",
         authors = {"Silencio"},
@@ -36,6 +37,7 @@ public class CustomPlugin {
     private final ProxyServer server;
     private final BanManager banManager;
     private final PlaytimeManager playtimeManager;
+    private final NoticeManager noticeManager;
 
 
     @Inject
@@ -44,6 +46,7 @@ public class CustomPlugin {
         this.logger = logger;
         this.banManager = new BanManager(this, dataDirectory);
         this.playtimeManager = new PlaytimeManager(this, dataDirectory);
+        this.noticeManager = new NoticeManager(this, dataDirectory);
     }
 
     @Subscribe
@@ -100,6 +103,9 @@ public class CustomPlugin {
         CommandMeta discordCommandMeta = commandManager.metaBuilder("discord")
                 .plugin(this)
                 .build();
+        CommandMeta noticeCommandMeta = commandManager.metaBuilder("notice")
+                .plugin(this)
+                .build();
 
         // Listeners
         eventManager.register(this, new PlayerJoinEvent(server, this));
@@ -123,6 +129,7 @@ public class CustomPlugin {
         commandManager.register(kickCommandMeta, new KickCommand(server));
         commandManager.register(playtimeCommandMeta, new PlaytimeCommand(server, this));
         commandManager.register(reloadPlaytimeCommandMeta, new ReloadPlaytimeCommand(server, this));
+        commandManager.register(noticeCommandMeta, new NoticeCommand(this));
 
         PacketEvents.getAPI().getEventManager().registerListener(new SafeServerPacket());
 
@@ -135,6 +142,10 @@ public class CustomPlugin {
 
     public PlaytimeManager getPlaytimeManager() {
         return playtimeManager;
+    }
+
+    public NoticeManager getNoticeManager() {
+        return noticeManager;
     }
 
     public Logger getLogger() {

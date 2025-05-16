@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.silencio.customplugin.CustomPlugin;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.ComponentBuilderApplicable;
 import org.slf4j.Logger;
 
 import java.io.File;

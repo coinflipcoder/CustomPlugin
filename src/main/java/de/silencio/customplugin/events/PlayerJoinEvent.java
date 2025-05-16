@@ -8,7 +8,9 @@ import com.velocitypowered.api.proxy.ProxyServer;
 import de.silencio.customplugin.CustomPlugin;
 import de.silencio.customplugin.managers.BanManager;
 import de.silencio.customplugin.managers.MessageManager;
+import de.silencio.customplugin.managers.NoticeManager;
 import de.silencio.customplugin.managers.PlaytimeManager;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
@@ -18,14 +20,17 @@ import java.util.Objects;
 
 public class PlayerJoinEvent {
     private static final LuckPerms luckPermsAPI = LuckPermsProvider.get();
-    private final ProxyServer server;
-    private final BanManager banManager;
+    private static final MiniMessage mm = MiniMessage.miniMessage();
     private final PlaytimeManager playtimeManager;
+    private final NoticeManager noticeManager;
+    private final BanManager banManager;
+    private final ProxyServer server;
 
     public PlayerJoinEvent(ProxyServer server, CustomPlugin plugin) {
         this.server = server;
         this.banManager = plugin.getBanManager();
         this.playtimeManager = plugin.getPlaytimeManager();
+        this.noticeManager = plugin.getNoticeManager();
     }
 
     @Subscribe
@@ -54,5 +59,12 @@ public class PlayerJoinEvent {
 
         // Send player logged in message globally
         server.sendMessage(MessageManager.join(prefix));
+
+        // Check if a notice is set
+        if (noticeManager.hasNotice()) {
+            // Send the notice to the player
+            String notice = noticeManager.getNotice();
+            player.sendMessage(mm.deserialize(notice));
+        }
     }
 }
