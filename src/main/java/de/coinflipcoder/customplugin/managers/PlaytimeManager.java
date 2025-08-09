@@ -1,8 +1,8 @@
-package de.silencio.customplugin.managers;
+package de.coinflipcoder.customplugin.managers;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.silencio.customplugin.CustomPlugin;
+import de.coinflipcoder.customplugin.CustomPlugin;
 import net.kyori.adventure.text.Component;
 import org.slf4j.Logger;
 

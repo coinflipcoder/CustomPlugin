@@ -1,4 +1,4 @@
-package de.silencio.customplugin.events;
+package de.coinflipcoder.customplugin.events;
 
 import com.github.retrooper.packetevents.event.PacketListenerAbstract;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;

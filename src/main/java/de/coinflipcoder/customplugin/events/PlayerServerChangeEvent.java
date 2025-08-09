@@ -1,10 +1,10 @@
-package de.silencio.customplugin.events;
+package de.coinflipcoder.customplugin.events;
 
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.player.ServerConnectedEvent;
 import com.velocitypowered.api.proxy.ProxyServer;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
-import de.silencio.customplugin.managers.MessageManager;
+import de.coinflipcoder.customplugin.managers.MessageManager;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;

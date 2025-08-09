@@ -1,10 +1,10 @@
-package de.silencio.customplugin.commands;
+package de.coinflipcoder.customplugin.commands;
 
 import com.google.common.base.Joiner;
 import com.velocitypowered.api.command.SimpleCommand;
 import com.velocitypowered.api.proxy.ProxyServer;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
-import de.silencio.customplugin.managers.MessageManager;
+import de.coinflipcoder.customplugin.managers.MessageManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 

@@ -5,8 +5,8 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '7.1.0'
 }
 
-group = 'de.silencio'
-version = '1.8'
+group = 'de.coinflipcoder'
+version = '1.8.1'
 
 repositories {
     mavenCentral()
@@ -21,7 +21,7 @@ shadowJar {
     // This will bundle dependencies into the final JAR
     mergeServiceFiles()
     manifest {
-        attributes 'Main-Class': 'de.silencio.customplugin.CustomPlugin'
+        attributes 'Main-Class': 'de.coinflipcoder.customplugin.CustomPlugin'
     }
 }
 

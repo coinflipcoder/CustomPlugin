@@ -1,18 +1,16 @@
-package de.silencio.customplugin.events;
+package de.coinflipcoder.customplugin.events;
 
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.connection.DisconnectEvent;
 import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ProxyServer;
-import de.silencio.customplugin.CustomPlugin;
-import de.silencio.customplugin.managers.MessageManager;
-import de.silencio.customplugin.managers.PlaytimeManager;
+import de.coinflipcoder.customplugin.CustomPlugin;
+import de.coinflipcoder.customplugin.managers.MessageManager;
+import de.coinflipcoder.customplugin.managers.PlaytimeManager;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
 
-import java.time.Duration;
-import java.time.Instant;
 import java.util.Objects;
 
 public class PlayerLeaveEvent {

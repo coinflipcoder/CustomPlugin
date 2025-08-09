@@ -1,4 +1,4 @@
-package de.silencio.customplugin.commands;
+package de.coinflipcoder.customplugin.commands;
 
 import com.velocitypowered.api.command.SimpleCommand;
 import com.velocitypowered.api.proxy.Player;

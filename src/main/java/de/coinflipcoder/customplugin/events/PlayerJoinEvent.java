@@ -1,15 +1,15 @@
-package de.silencio.customplugin.events;
+package de.coinflipcoder.customplugin.events;
 
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.connection.LoginEvent;
 import com.velocitypowered.api.event.connection.PostLoginEvent;
 import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ProxyServer;
-import de.silencio.customplugin.CustomPlugin;
-import de.silencio.customplugin.managers.BanManager;
-import de.silencio.customplugin.managers.MessageManager;
-import de.silencio.customplugin.managers.NoticeManager;
-import de.silencio.customplugin.managers.PlaytimeManager;
+import de.coinflipcoder.customplugin.CustomPlugin;
+import de.coinflipcoder.customplugin.managers.BanManager;
+import de.coinflipcoder.customplugin.managers.MessageManager;
+import de.coinflipcoder.customplugin.managers.NoticeManager;
+import de.coinflipcoder.customplugin.managers.PlaytimeManager;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;

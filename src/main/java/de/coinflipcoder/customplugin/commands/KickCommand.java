@@ -1,9 +1,9 @@
-package de.silencio.customplugin.commands;
+package de.coinflipcoder.customplugin.commands;
 
 import com.velocitypowered.api.command.SimpleCommand;
 import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ProxyServer;
-import de.silencio.customplugin.managers.MessageManager;
+import de.coinflipcoder.customplugin.managers.MessageManager;
 
 import java.util.ArrayList;
 import java.util.List;

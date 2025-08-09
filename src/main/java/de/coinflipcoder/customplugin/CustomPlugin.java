@@ -1,4 +1,4 @@
-package de.silencio.customplugin;
+package de.coinflipcoder.customplugin;
 
 import com.github.retrooper.packetevents.PacketEvents;
 import com.google.inject.Inject;
@@ -11,11 +11,11 @@ import com.velocitypowered.api.plugin.Dependency;
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
-import de.silencio.customplugin.commands.*;
-import de.silencio.customplugin.events.*;
-import de.silencio.customplugin.managers.BanManager;
-import de.silencio.customplugin.managers.NoticeManager;
-import de.silencio.customplugin.managers.PlaytimeManager;
+import de.coinflipcoder.customplugin.commands.*;
+import de.coinflipcoder.customplugin.events.*;
+import de.coinflipcoder.customplugin.managers.BanManager;
+import de.coinflipcoder.customplugin.managers.NoticeManager;
+import de.coinflipcoder.customplugin.managers.PlaytimeManager;
 import org.slf4j.Logger;
 
 import java.nio.file.Path;
@@ -23,10 +23,10 @@ import java.nio.file.Path;
 @Plugin(
         id = "customplugin",
         name = "CustomPlugin",
-        version = "1.8",
+        version = "1.8.1",
         description = "A custom plugin for my network needs.",
         url = "devlencio.net",
-        authors = {"Silencio"},
+        authors = {"Coinflipcoder"},
         dependencies = {
                 @Dependency(id = "luckperms"),
                 @Dependency(id = "packetevents")

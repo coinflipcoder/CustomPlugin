@@ -1,9 +1,9 @@
-package de.silencio.customplugin.managers;
+package de.coinflipcoder.customplugin.managers;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.silencio.customplugin.CustomPlugin;
+import de.coinflipcoder.customplugin.CustomPlugin;
 import org.slf4j.Logger;
 
 import java.io.BufferedReader;

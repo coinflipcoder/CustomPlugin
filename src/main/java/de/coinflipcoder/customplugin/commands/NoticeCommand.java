@@ -1,9 +1,9 @@
-package de.silencio.customplugin.commands;
+package de.coinflipcoder.customplugin.commands;
 
 import com.velocitypowered.api.command.SimpleCommand;
-import de.silencio.customplugin.CustomPlugin;
-import de.silencio.customplugin.managers.MessageManager;
-import de.silencio.customplugin.managers.NoticeManager;
+import de.coinflipcoder.customplugin.CustomPlugin;
+import de.coinflipcoder.customplugin.managers.MessageManager;
+import de.coinflipcoder.customplugin.managers.NoticeManager;
 
 public class NoticeCommand implements SimpleCommand {
     private final NoticeManager noticeManager;

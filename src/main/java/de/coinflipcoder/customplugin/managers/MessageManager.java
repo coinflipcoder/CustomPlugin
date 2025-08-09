@@ -1,4 +1,4 @@
-package de.silencio.customplugin.managers;
+package de.coinflipcoder.customplugin.managers;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -60,7 +60,6 @@ public class MessageManager {
                                      <bold><blue>»</blue></bold> <gray> Nether portals can have any shape or size.
                                      <bold><blue>»</blue></bold> <gray> Mobs can be silenced using a name tag called "silence me".
                                      <bold><blue>»</blue></bold> <gray> Revamped anvil xp costs.
-                                     <bold><blue>»</blue></bold> <gray> The height limit is 2032 blocks.
                                      <bold><blue>»</blue></bold> <gray> You don't need an arrow in your inventory to use infinity.
                                      <bold><blue>»</blue></bold> <gray> Infinity and mending are combinable.
                                      <bold><blue>»</blue></bold> <gray> Villagers follow you when holding emeralds.

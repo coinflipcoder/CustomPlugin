@@ -1,7 +1,7 @@
-package de.silencio.customplugin.commands;
+package de.coinflipcoder.customplugin.commands;
 
 import com.velocitypowered.api.command.SimpleCommand;
-import de.silencio.customplugin.managers.MessageManager;
+import de.coinflipcoder.customplugin.managers.MessageManager;
 
 public final class DiscordCommand implements SimpleCommand {
 

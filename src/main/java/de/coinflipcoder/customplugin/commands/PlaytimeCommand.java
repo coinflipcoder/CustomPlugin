@@ -1,12 +1,12 @@
-package de.silencio.customplugin.commands;
+package de.coinflipcoder.customplugin.commands;
 
 import com.velocitypowered.api.command.SimpleCommand;
 import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ProxyServer;
-import de.silencio.customplugin.CustomPlugin;
-import de.silencio.customplugin.managers.BanManager;
-import de.silencio.customplugin.managers.MessageManager;
-import de.silencio.customplugin.managers.PlaytimeManager;
+import de.coinflipcoder.customplugin.CustomPlugin;
+import de.coinflipcoder.customplugin.managers.BanManager;
+import de.coinflipcoder.customplugin.managers.MessageManager;
+import de.coinflipcoder.customplugin.managers.PlaytimeManager;
 import net.kyori.adventure.text.Component;
 
 import java.util.ArrayList;
